@@ -24,7 +24,7 @@ export class MovieService {
       const savedMovie = await movieDocument.save();
       await this.indexer.index([savedMovie]);
       return Result.ok(savedMovie.id);
-    } catch (err) {
+    } catch (err: any) {
       const movieWithThisTitleAlreadyExists =
         err.code === mongodbErrorCodes.duplicateKey && err.keyPattern?.title;
       if (movieWithThisTitleAlreadyExists) {
@@ -49,7 +49,7 @@ export class MovieService {
       await this.indexer.updateOne(movie.objectID, updateDto);
       return Result.ok(movie.id);
     } catch (err) {
-      return Result.err(err);
+      return Result.err(err as Error);
     }
   }
 
@@ -65,7 +65,7 @@ export class MovieService {
       await this.indexer.delete([movie]);
       return Result.ok(id);
     } catch (err) {
-      return Result.err(err);
+      return Result.err(err as Error);
     }
   }
 }

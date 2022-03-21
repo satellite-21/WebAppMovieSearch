@@ -7,9 +7,9 @@
 
 ---
 
-This is an example of a simple full-stack application that integrates with external API.
+This is an example of a simple full-stack application that integrates with an external API.
 
-The application is a simple web app for searching movies. You can also add new movies that will be saved to a database and indexed in an external search engine.
+The Application is a web app for searching movies. You can also add new movies that will be saved to a database and indexed in an external search engine.
 
 ![Movie indexer app](assets/screenshot.png)
 
@@ -26,7 +26,7 @@ Tech used:
 - [React](https://reactjs.org/) frontend, [SASS/SCSS](https://sass-lang.com/) for styles
 - [Algolia search engine](https://www.algolia.com/) as external indexing API
 - [OpenAPI/Swagger](https://swagger.io/) for documentation
-- [nx](https://nx.dev/) monorepo
+- [Nx](https://nx.dev/) monorepo
 
 ## Running the application
 

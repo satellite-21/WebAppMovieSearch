@@ -3,6 +3,7 @@
 **Check out my other repositories**:
 
 - [Domain-Driven Hexagon](https://github.com/Sairyss/domain-driven-hexagon) - Guide on Domain-Driven Design, software architecture, design patterns, best practices etc.
+- [Distributed systems topics](https://github.com/Sairyss/distributed-systems-topics) list of topics and resources related to distributed systems, system design, microservices, scalability and performance, etc
 - [Backend best practices](https://github.com/Sairyss/backend-best-practices) - Best practices, tools and guidelines for backend development.
 
 ---

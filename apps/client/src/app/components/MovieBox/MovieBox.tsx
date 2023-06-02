@@ -12,7 +12,7 @@ interface MovieBoxProps {
   setSelectedMovie: React.Dispatch<React.SetStateAction<Movie>>;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
+ne
 interface GenresProps {
   genres: string[];
 }

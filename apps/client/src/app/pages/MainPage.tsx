@@ -1,16 +1,15 @@
 import { InstantSearch, Configure } from 'react-instantsearch-dom';
 import algoliasearch from 'algoliasearch/lite';
+import { useState } from 'react';
 import MovieResultsHits from '../components/MovieSearchResults/MovieSearchResults';
 import SearchBox from '../components/SearchBox/SearchBox';
 import { config } from '../config/config';
-import { useState } from 'react';
 import { createMovie } from '../api/api.client';
 import MovieEditForm from '../components/MovieEditForm/MovieEditForm';
 import { Movie } from '@types';
 import genericStyles from '../generic-styles.module.scss';
 
 const searchClient = algoliasearch(config.algolia.appId, config.algolia.apiKey);
-
 const MainPage = (props: any) => {
   const [createFormIsVisible, setCreateFormIsVisible] = useState(false);
   const emptyMovie: Movie = {

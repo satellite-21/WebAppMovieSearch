@@ -11,6 +11,8 @@ import DynamicEditForm from '../DynamicEditForm/DynamicEditForm';
 import { showNotification } from '../../misc/showNotification';
 import { toSentenceCase } from '../../misc/stringUtils';
 
+//this component will receive the following type of props 
+//such as movie, visible, setVisible, and submitForm.
 interface MovieEditFormProps {
   movie?: Movie;
   visible: boolean;
@@ -19,29 +21,30 @@ interface MovieEditFormProps {
 }
 
 // TODO: refactor this component
+
 const MovieEditForm = ({
   visible,
   setVisible,
   movie,
   submitForm,
 }: MovieEditFormProps) => {
-  const { values, handleChange, handleSubmit, errors, setErrors, setValues } =
-    useForm(submit, validateMovieCreation);
-  const handleCloseModal = () => {
+  const { values, handleChange, handleSubmit, errors, setErrors, setValues } = 
+    useForm(submit, validateMovieCreation); 
+  const handleCloseModal = () => { //this is responsible for closing the modal and resetting form errors and values
     setVisible(false);
     setErrors({});
     setValues({} as Movie);
   };
-  const ignoredKeys = ['_id', 'objectID'];
+  const ignoredKeys = ['_id', 'objectID']; 
 
   useEffect(() => {
-    if (movie && visible) setValues(movie);
+    if (movie && visible) setValues(movie);     //useEffect hook is used to update the form values with the movie prop when it changes.
   }, [movie, visible, setValues]);
 
   async function submit(): Promise<any> {
     if (!values.title) return;
-    return submitForm(values, values._id).then((res) => {
-      if (visible && res.status < 400) {
+    return submitForm(values, values._id).then((res) => {  // submitForm function passed as a prop
+      if (visible && res.status < 400) { // If the response status is less than 400, it hides the form by setting setVisible to false.
         setVisible(false);
       }
       return res;
@@ -53,16 +56,19 @@ const MovieEditForm = ({
   };
 
   function renderErrors(errors: FormErrors<Movie>, key: string) {
-    return (
+    return ( 
       <>
         {(errors as any)[key].split(',').map((msg: string) => (
-          <p className={styles.formInfo}>{msg}</p>
+          <p className={styles.formInfo}>{msg}</p> //The renderErrors function is responsible for rendering error messages based on the errors object.
         ))}
       </>
     );
   }
 
-  return (
+
+  // The component renders a form with input fields and dynamic edit forms based on the values object. 
+  // It maps over the keys of values and conditionally renders input fields or dynamic forms based on the data type.
+  return ( 
     <div
       className={styles.movieEditFormContainer}
       style={{ display: visible ? 'block' : 'none' }}
